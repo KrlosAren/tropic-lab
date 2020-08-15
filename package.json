@@ -1,0 +1,47 @@
+{
+  "name": "tropic-lab",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "server": "node ./server/server.js",
+    "build:dist": "webpack --config ./webpack.config.js --mode production",
+    "build:dev": "webpack-dev-server --config ./webpack.config.local.js --mode development"
+  },
+  "keywords": [],
+  "author": "Carlos Lopez Zavarce <krlosaren@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KrlosAren/tropic-lab.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KrlosAren/tropic-lab/issues"
+  },
+  "homepage": "https://github.com/KrlosAren/tropic-lab#readme",
+  "description": "",
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^4.2.1",
+    "file-loader": "^6.0.0",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.10.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "pug": "^3.0.0",
+    "pug-loader": "^2.4.0",
+    "style-loader": "^1.2.1",
+    "stylus": "^0.54.8",
+    "stylus-loader": "^3.0.2",
+    "terser-webpack-plugin": "^4.1.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^5.2.0",
+    "express": "^4.17.1"
+  }
+}
