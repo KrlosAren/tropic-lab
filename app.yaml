@@ -1,4 +1,4 @@
-runtime: nodejs12 # or nodejs10
+runtime: nodejs10 # or nodejs10
 env: flex
 
 instance_class: F2
