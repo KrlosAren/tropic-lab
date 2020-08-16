@@ -3,16 +3,6 @@ cache:
   directories: 
     - node_modules
     - ~/.npm
-deploy: 
-  commit_message: "Deploy Release"
-  edge: true
-  github_token: $GITHUB_TOKEN
-  keep-history: true
-  local-dir: dist/
-  provider: pages
-  skip_cleanup: true
-  target-branch: gh-pages
-  true: ~
 language: node_js
 node_js: 
   - "14"
@@ -22,7 +12,7 @@ notifications:
     on_success: always
     slack: "tropic-lab:55dVeN7C5gxptpxz7gNkY6bE"
 script: 
-  - "yarn start"
+  - "yarn build:dist"
 deploy:
   provider: pages
   skip_cleanup: true
