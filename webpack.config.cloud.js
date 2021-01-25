@@ -1,18 +1,17 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const TersetJsPlugin = require('terser-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const TersetJsPlugin = require("terser-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, './src/index.js'),
+    app: path.resolve(__dirname, "./src/index.js"),
   },
   output: {
-    path: path.resolve(__dirname, 'www'),
-    filename: './js/[name].[hash].js',
+    path: path.resolve(__dirname, "dist"),
+    filename: "./js/bundle.js",
   },
   module: {
     rules: [
@@ -20,14 +19,14 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
         },
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: 'html-loader',
+            loader: "html-loader",
           },
         ],
       },
@@ -35,7 +34,7 @@ module.exports = {
         test: /\.pug$/,
         use: [
           {
-            loader: 'pug-loader',
+            loader: "pug-loader",
             options: {
               pretty: true,
             },
@@ -49,14 +48,14 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
           },
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               sourceMap: true,
               importLoaders: 1,
             },
           },
           {
-            loader: 'stylus-loader',
+            loader: "stylus-loader",
             options: {
               sourcemap: true,
               importLoaders: 1,
@@ -68,9 +67,9 @@ module.exports = {
         test: /\.jpg|png|gif|woff|eot|ttf|svg|mp4|webm$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              name: 'images/[name].[ext]',
+              name: "images/[name].[ext]",
             },
           },
         ],
@@ -79,21 +78,18 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './public/pug/index.pug'),
-      filename: 'index.html',
+      template: path.resolve(__dirname, "./public/pug/index.pug"),
+      filename: "index.html",
       inject: true,
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[hash].css',
+      filename: "css/[name].[hash].css",
     }),
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ['**/app.*'],
+      cleanOnceBeforeBuildPatterns: ["**/app.*"],
     }),
   ],
   optimization: {
-    minimizer: [
-      new TersetJsPlugin(),
-      new OptimizeCSSAssetsPlugin()
-    ]
+    minimizer: [new TersetJsPlugin(), new OptimizeCSSAssetsPlugin()],
   },
 };
